@@ -20,6 +20,9 @@
 
   programs.kitty = {
     enable = true;
+    font.name = "ubuntu-sans-mono";
+    font.size = 16.0;
+    themeFile = "GruvboxMaterialLightMedium";
   };
 
   home.stateVersion = "26.05";

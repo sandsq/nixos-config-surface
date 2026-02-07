@@ -159,6 +159,7 @@
   fonts.packages = with pkgs; [
     ubuntu-sans
     ubuntu-sans-mono
+    nerd-fonts.fira-code
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
