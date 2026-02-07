@@ -105,6 +105,7 @@
     kdePackages.qtsvg
     kdePackages.dolphin
     wl-clipboard
+    gh
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
