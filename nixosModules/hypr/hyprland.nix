@@ -14,4 +14,6 @@
   environment.systemPackages = with pkgs; [
     inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
+
+  # environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
 }

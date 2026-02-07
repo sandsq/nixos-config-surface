@@ -30,6 +30,7 @@
     config.microsoft-surface.surface-control.enable = true;
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs; };
+
       modules = [
         nixos-hardware.nixosModules.microsoft-surface-common
         nixos-hardware.nixosModules.microsoft-surface-pro-intel
@@ -39,6 +40,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
 
+          home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.sand = import ./home.nix;
         }
       ];

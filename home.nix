@@ -1,12 +1,25 @@
-{ config, pkgs, inputs, ... }:
-{
+{ config, pkgs, inputs, ... }: {
   home.username = "sand";
   home.homeDirectory = "/home/sand";
 
   wayland.windowManager.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     plugins = [
       inputs.hyprgrass.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
+
+    extraConfig = builtins.readFile ./dotfiles/hypr/hyprland.conf;
+
+  };
+
+  home.packages = with pkgs; [
+    inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default
+  ];
+
+  programs.kitty = {
+    enable = true;
   };
 
   home.stateVersion = "26.05";

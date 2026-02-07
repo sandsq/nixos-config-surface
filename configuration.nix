@@ -16,12 +16,6 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
-
-
-
-
-  # Use latest kernel.
-  # boot.kernelPackages = pkgs.linuxPackages_latest;
   hardware.microsoft-surface =
   {
     kernelVersion = "stable";
@@ -40,6 +34,9 @@
     fsType = "ext4";
     options = ["defaults" "noatime"];
   };
+
+
+  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
 
   # networking.hostName = "nixos"; # Define your hostname.
 
@@ -124,7 +121,6 @@
     git
     vim
     wget
-    kitty
     fuzzel
     wl-clipboard
     gh
@@ -159,6 +155,11 @@
   services.tumbler.enable = true;
 
   programs.steam.enable = true;
+
+  fonts.packages = with pkgs; [
+    ubuntu-sans
+    ubuntu-sans-mono
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

@@ -1,6 +1,6 @@
 {
   imports = [
-    ./hypr/hyprland.nix
+    # ./hypr/hyprland.nix
     ./garbage_collection.nix
   ];
 }
