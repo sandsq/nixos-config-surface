@@ -39,6 +39,13 @@
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
 
+  nix.settings = {
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
+
+
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
 
@@ -83,6 +90,7 @@
     enable = true;
     powerOnBoot = true;
   };
+  services.blueman.enable = true;
 
 
 
@@ -102,7 +110,11 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -117,6 +129,10 @@
     gh
     eww
     zed-editor
+    tree
+    libwacom
+    libwacom-surface
+    nputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 
   programs.zoxide.enable = true;
