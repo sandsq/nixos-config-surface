@@ -11,12 +11,23 @@
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 10;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
+
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
+  nix.settings.auto-optimise-store = true;
 
   # Use latest kernel.
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  hardware.microsoft-surface = 
+  hardware.microsoft-surface =
   {
     kernelVersion = "stable";
   };
@@ -47,7 +58,7 @@
   # services.xserver.enable = true;
 
 
-  
+
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -67,13 +78,13 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  
+
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
   };
 
-  
+
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
@@ -87,7 +98,7 @@
   };
 
   programs.firefox.enable = true;
-  programs.fish.enable = true;  
+  programs.fish.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -102,11 +113,34 @@
     wget
     kitty
     fuzzel
-    kdePackages.qtsvg
-    kdePackages.dolphin
     wl-clipboard
     gh
+    eww
+    zed-editor
   ];
+
+  programs.zoxide.enable = true;
+  programs.zoxide.enableFishIntegration = true;
+
+  programs.yazi = {
+    enable = true;
+    settings = {
+      yazi = {
+        show_hidden = true;
+      };
+    };
+  };
+
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs; [
+      thunar-archive-plugin
+      thunar-volman
+    ];
+  };
+  programs.xfconf.enable = true;
+  services.gvfs.enable = true;
+  services.tumbler.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -152,4 +186,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-
