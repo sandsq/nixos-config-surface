@@ -23,7 +23,8 @@
 
   programs.kitty = {
     enable = true;
-    font.name = "ubuntu-sans-mono";
+    # font.name = "ubuntu-sans-mono";
+    font.name = "Departure Mono";
     font.size = 16.0;
     themeFile = "GruvboxMaterialLightMedium";
   };

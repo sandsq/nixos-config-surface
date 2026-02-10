@@ -14,16 +14,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixos-hardware.url = "github:8bitbuddhist/nixos-hardware?ref=surface-rust-target-spec-fix";
-    hyprland.url = "github:hyprwm/Hyprland"; # ?ref=v0.53.3";
+    hyprland.url = "github:hyprwm/Hyprland"; #?ref=v0.53.3";
     hyprgrass = {
       url = "github:horriblename/hyprgrass";
       inputs.hyprland.follows = "hyprland";
     };
-
     rose-pine-hyprcursor = {
       url = "github:ndom91/rose-pine-hyprcursor";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.hyprlang.follows = "hyprland/hyprlang";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   outputs = inputs@{ self, nixpkgs, nixos-hardware, home-manager, ... }: {
@@ -44,6 +47,7 @@
           home-manager.extraSpecialArgs = { inherit inputs; };
           home-manager.users.sand = import ./homeManagerModules;
         }
+        # ./noctalia.nix
       ];
 
 

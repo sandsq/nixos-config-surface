@@ -109,6 +109,9 @@
   };
   services.blueman.enable = true;
 
+  services.upower.enable = true;
+  services.power-profiles-daemon.enable = true;
+
   # so signins persist or something (like zed)
   services.gnome.gnome-keyring.enable = true;
 
@@ -149,6 +152,14 @@
     killall
     jq
     brightnessctl
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
+    quickshell
+    kdePackages.qtwayland
+    kdePackages.qtsvg
+    kdePackages.qtimageformats
+    kdePackages.qtmultimedia
+    kdePackages.qt5compat
+    acpi
     # xdg-desktop-portal-gtk
   ];
 
@@ -183,7 +194,8 @@
     ubuntu-sans
     ubuntu-sans-mono
     nerd-fonts.fira-code
-    # font-awesome
+    nerd-fonts.departure-mono
+    departure-mono
   ];
 
   systemd.services.usbwakeup = {
