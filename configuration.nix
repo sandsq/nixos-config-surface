@@ -2,13 +2,19 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, inputs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot = {
@@ -16,8 +22,7 @@
   };
   boot.loader.efi.canTouchEfiVariables = true;
 
-  hardware.microsoft-surface =
-  {
+  hardware.microsoft-surface = {
     kernelVersion = "stable";
   };
   services.iptsd = {
@@ -32,16 +37,22 @@
   fileSystems."/mnt/sd256" = {
     device = "/dev/disk/by-uuid/2408d4f6-1793-452c-81b0-554064c097ea";
     fsType = "ext4";
-    options = ["defaults" "noatime"];
+    options = [
+      "defaults"
+      "noatime"
+    ];
   };
 
   nix.settings = {
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
-    };
+    substituters = [ "https://hyprland.cachix.org" ];
+    trusted-substituters = [ "https://hyprland.cachix.org" ];
+    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+  };
 
-  environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
+  environment.pathsToLink = [
+    "/share/applications"
+    "/share/xdg-desktop-portal"
+  ];
   xdg.portal = {
     enable = true;
     extraPortals = [ pkgs.xdg-desktop-portal-gtk ]; # need for file picker
@@ -54,7 +65,10 @@
     #   };
     # };
     config = {
-      hyprland.default = [ "hyprland" "gtk" ];
+      hyprland.default = [
+        "hyprland"
+        "gtk"
+      ];
       hyprland."org.freedesktop.portal.FileChooser" = [ "gtk" ];
       hyprland."org.freedesktop.portal.openURI" = [ "gtk" ];
     };
@@ -64,9 +78,6 @@
 
   # Configure network connections interactively with nmcli or nmtui.
   networking.networkmanager.enable = true;
-
-
-
 
   # Set your time zone.
   time.timeZone = "America/Indianapolis";
@@ -85,9 +96,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-
-
 
   # Configure keymap in X11
   services.xserver.xkb.layout = "us";
@@ -120,7 +128,6 @@
   # so signins persist or something (like zed)
   services.gnome.gnome-keyring.enable = true;
 
-
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
@@ -128,16 +135,20 @@
   users.users.sand = {
     isNormalUser = true;
     home = "/home/sand";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
     shell = pkgs.fish;
   };
 
   programs.firefox.enable = true;
   programs.fish.enable = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -165,13 +176,14 @@
     kdePackages.qtmultimedia
     kdePackages.qt5compat
     acpi
-    # xdg-desktop-portal-gtk
+    nil
+    nixd
+    package-version-server
+    socat
   ];
 
   programs.zoxide.enable = true;
   programs.zoxide.enableFishIntegration = true;
-
-
 
   programs.thunar = {
     enable = true;

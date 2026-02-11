@@ -1,11 +1,17 @@
-{ config, pkgs, inputs, ... }: {
+{
+  pkgs,
+  inputs,
+  ...
+}:
+{
   home.username = "sand";
   home.homeDirectory = "/home/sand";
 
   wayland.windowManager.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     plugins = [
       inputs.hyprgrass.packages.${pkgs.stdenv.hostPlatform.system}.default
     ];
@@ -20,6 +26,8 @@
     hyprlock
     hypridle
     grimblast
+    hyprlang
+    hyprls
   ];
 
   services.hyprpaper = {
