@@ -157,7 +157,7 @@
     git
     vim
     wget
-    fuzzel
+    # fuzzel
     wl-clipboard
     gh
     eww
@@ -180,6 +180,9 @@
     nixd
     package-version-server
     socat
+    pavucontrol
+    libnotify
+    dunst
   ];
 
   programs.zoxide.enable = true;
