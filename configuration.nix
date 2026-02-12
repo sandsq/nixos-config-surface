@@ -184,6 +184,7 @@
     libnotify
     dunst
     dracula-icon-theme
+    wvkbd
   ];
 
   programs.zoxide.enable = true;

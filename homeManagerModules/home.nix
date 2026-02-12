@@ -43,6 +43,10 @@
     themeFile = "GruvboxMaterialLightMedium";
   };
 
+  programs.starship = {
+    enable = true;
+    enableFishIntegration = true;
+  };
   programs.yazi = {
     enable = true;
     settings = {
