@@ -225,11 +225,15 @@
     HandlePowerKeyLongPress = "poweroff";
   };
 
-  systemd.services.reenable_volume_buttons = {
-    script = ''
-      sudo modprobe -r soc_button_array && sudo modprobe soc_buttom_array
-    '';
-  }; # https://github.com/linux-surface/linux-surface/issues/1392#issuecomment-1989558759
+  # systemd.services.reenable_volume_buttons = {
+  #   script = ''
+  #     modprobe -r soc_button_array && modprobe soc_buttom_array
+  #   '';
+  #   wantedBy = [ "multi-user.target" ];
+  # }; # https://github.com/linux-surface/linux-surface/issues/1392#issuecomment-1989558759
+  boot.initrd.kernelModules = {
+    pinctrl_sunrisepoint = true;
+  };
   systemd.services.usbwakeup = {
     script = ''
       echo enabled > /sys/bus/usb/devices/1-5/power/wakeup
