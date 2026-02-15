@@ -129,9 +129,10 @@
   services.gnome.gnome-keyring.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
-  # services.libinput.enable = true;
-
+  services.libinput.enable = true;
+  services.libinput.touchpad.disableWhileTyping = false;
   # Define a user account. Don't forget to set a password with ‘passwd’.
+
   users.users.sand = {
     isNormalUser = true;
     home = "/home/sand";
@@ -194,6 +195,8 @@
     dracula-icon-theme
     wvkbd
     bc
+    libinput
+    dropbox
   ];
 
   programs.thunar = {
@@ -252,7 +255,7 @@
       CPU_BOOST_ON_BAT = 0;
       CPU_SCALING_GOVERNOR_ON_AC = "performance";
       CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-      START_CHARGE_THRESH_BAT1 = "75";
+      START_CHARGE_THRESH_BAT1 = "40";
       STOP_CHARGE_THRESH_BAT1 = "80";
     };
   };
