@@ -8,9 +8,13 @@
 
 {
   imports = [
+    ../../nixos_modules/garbage_collection.nix
+    ../../nixos_modules/cachix_for_hyprland.nix
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+  garbage_collection.enable = true;
+  cachix_for_hyprland.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot = {
@@ -187,6 +191,7 @@
     bc
     libinput
     dropbox
+    dconf-editor
   ];
 
   programs.thunar = {
@@ -199,6 +204,7 @@
   programs.xfconf.enable = true;
   services.gvfs.enable = true;
   services.tumbler.enable = true;
+  programs.dconf.enable = true;
 
   programs.steam.enable = true;
 

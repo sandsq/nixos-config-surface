@@ -50,7 +50,6 @@
             nixos-hardware.nixosModules.microsoft-surface-common
             nixos-hardware.nixosModules.microsoft-surface-pro-intel
             ./hosts/nixos-surface
-            ./nixosModules
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
