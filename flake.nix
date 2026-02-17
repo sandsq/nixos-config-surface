@@ -41,26 +41,28 @@
     {
       microsoft-surface.ipts.enable = true;
       config.microsoft-surface.surface-control.enable = true;
-      nixosConfigurations.nixos-surface = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+      nixosConfigurations = {
 
-        modules = [
-          nixos-hardware.nixosModules.microsoft-surface-common
-          nixos-hardware.nixosModules.microsoft-surface-pro-intel
-          ./configuration.nix
-          ./nixosModules
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
+        nixos-surface = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs; };
 
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.sand = import ./homeManagerModules;
-          }
-          # ./noctalia.nix
-        ];
+          modules = [
+            nixos-hardware.nixosModules.microsoft-surface-common
+            nixos-hardware.nixosModules.microsoft-surface-pro-intel
+            ./hosts/nixos-surface
+            ./nixosModules
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
 
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.sand = import ./homeManagerModules;
+            }
+            # ./noctalia.nix
+          ];
+
+        };
       };
-
     };
 }
