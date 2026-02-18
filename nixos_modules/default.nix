@@ -4,5 +4,6 @@
     ./cachix_for_hyprland.nix
     ./dvorak.nix
     ./garbage_collection.nix
+    ./thunar.nix
   ];
 }
