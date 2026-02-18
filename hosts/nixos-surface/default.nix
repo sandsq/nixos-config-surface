@@ -16,6 +16,8 @@
   cachix_for_hyprland.enable = true;
   dvorak.enable = true;
   thunar.enable = true;
+  sound_module.enable = true;
+  bluetooth_module.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot = {
@@ -32,8 +34,6 @@
       Touchscreen.DisableOnStylus = true;
     };
   };
-  # microsoft-surface.ipts.enable = true;
-  # config.microsoft-surface.surface-control.enable = true;
 
   fileSystems."/mnt/sd256" = {
     device = "/dev/disk/by-uuid/2408d4f6-1793-452c-81b0-554064c097ea";
@@ -92,22 +92,6 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  services.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
-  services.blueman.enable = true;
-
   services.upower.enable = true;
   # services.power-profiles-daemon.enable = true;
 
@@ -165,7 +149,6 @@
     nixd
     package-version-server
     socat
-    pavucontrol
     libnotify
     dunst
     dracula-icon-theme
