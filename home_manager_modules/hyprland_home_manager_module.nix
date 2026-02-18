@@ -13,9 +13,14 @@ in
   options = {
     hyprland_home_manager_module = {
       enable = mkEnableOption "enable my hyprland stuff";
-      hyprland_conf_path = mkOption {
+      conf_path = mkOption {
         type = types.path;
         default = ../dotfiles/hypr/hyprland.conf;
+      };
+      include_basics = mkOption {
+        type = types.bool;
+        default = true;
+        description = "include basic programs (kitty, fuzzel)";
       };
     };
   };
@@ -29,8 +34,7 @@ in
         inputs.hyprgrass.packages.${pkgs.stdenv.hostPlatform.system}.default
       ];
 
-      extraConfig = builtins.readFile cfg.hyprland_conf_path;
-
+      extraConfig = builtins.readFile cfg.conf_path;
     };
 
     home.packages = with pkgs; [
@@ -45,6 +49,13 @@ in
     ];
 
     services.hyprpaper = {
+      enable = true;
+    };
+
+    programs.kitty = mkIf cfg.include_basics {
+      enable = true;
+    };
+    programs.fuzzel = mkIf cfg.include_basics {
       enable = true;
     };
   };
