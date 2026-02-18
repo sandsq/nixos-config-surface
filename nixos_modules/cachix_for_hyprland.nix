@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 with lib;
 {
   options = {
@@ -6,7 +6,7 @@ with lib;
       enable = mkEnableOption "enables cachix for hyprland";
     };
   };
-  config = {
+  config = mkIf config.cachix_for_hyprland.enable {
     nix.settings = {
       substituters = [ "https://hyprland.cachix.org" ];
       trusted-substituters = [ "https://hyprland.cachix.org" ];

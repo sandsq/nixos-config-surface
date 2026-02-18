@@ -8,13 +8,13 @@
 
 {
   imports = [
-    ../../nixos_modules/garbage_collection.nix
-    ../../nixos_modules/cachix_for_hyprland.nix
+    ../../nixos_modules
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
   garbage_collection.enable = true;
   cachix_for_hyprland.enable = true;
+  dvorak.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot = {
@@ -70,9 +70,6 @@
 
   networking.hostName = "nixos-surface"; # Define your hostname.
 
-  # Configure network connections interactively with nmcli or nmtui.
-  networking.networkmanager.enable = true;
-
   # Set your time zone.
   time.timeZone = "America/Indianapolis";
 
@@ -90,12 +87,6 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb.layout = "us";
-  services.xserver.xkb.variant = "dvorak";
-  console.useXkbConfig = true;
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -146,20 +137,10 @@
   #   '';
   # };
   # programs.fish.enable = true;
+
   programs.firefox.enable = true;
-
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
-  ];
-
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
-    git
-    vim
-    wget
     # fuzzel
     wl-clipboard
     gh
@@ -192,6 +173,7 @@
     libinput
     dropbox
     dconf-editor
+    fastfetch
   ];
 
   programs.thunar = {
