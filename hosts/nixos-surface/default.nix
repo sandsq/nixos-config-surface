@@ -90,9 +90,9 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  # environment.systemPackages = with pkgs; [
-  #   gh
-  # ];
+  environment.systemPackages = with pkgs; [
+    gh # seems like gh needs to be here otherwise the auth won't be remembered
+  ];
 
   # security.rtkit.enable = true;
   # xdg.autostart.enable = true;

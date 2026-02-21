@@ -37,7 +37,6 @@
     fastfetch
     libcamera
 
-    gh
   ];
 
   programs.firefox.enable = true;
