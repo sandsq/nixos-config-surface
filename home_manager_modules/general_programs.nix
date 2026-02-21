@@ -11,7 +11,7 @@
     libnotify
     dunst
 
-    zed-editor
+    zed-editor # has issue with file picker
     nil
     nixd
     package-version-server
@@ -38,6 +38,7 @@
     libcamera
 
   ];
+  programs.vscode.enable = true;
 
   programs.firefox.enable = true;
 

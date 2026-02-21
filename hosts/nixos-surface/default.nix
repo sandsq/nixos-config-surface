@@ -96,29 +96,29 @@
 
   # security.rtkit.enable = true;
   # xdg.autostart.enable = true;
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal
-      pkgs.xdg-desktop-portal-hyprland
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    # xdgOpenUsePortal = true;
-    config = {
-      common = {
-        default = [ "gtk" ];
-        "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
-      };
-      hyprland = {
-        default = [
-          "hyprland"
-          "gtk"
-        ];
-        "org.freedesktop.portal.FileChooser" = [ "gtk" ];
-        "org.freedesktop.portal.OpenURI" = [ "gtk" ];
-      };
-    };
-  };
+  # xdg.portal = {
+  #   enable = true;
+  #   extraPortals = [
+  #     pkgs.xdg-desktop-portal
+  #     pkgs.xdg-desktop-portal-hyprland
+  #     pkgs.xdg-desktop-portal-gtk
+  #   ];
+  #   # xdgOpenUsePortal = true;
+  #   config = {
+  #     common = {
+  #       default = [ "gtk" ];
+  #       "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+  #     };
+  #     hyprland = {
+  #       default = [
+  #         "hyprland"
+  #         "gtk"
+  #       ];
+  #       "org.freedesktop.portal.FileChooser" = [ "gtk" ];
+  #       "org.freedesktop.portal.OpenURI" = [ "gtk" ];
+  #     };
+  #   };
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
