@@ -36,6 +36,8 @@
     dropbox
     fastfetch
     libcamera
+
+    gh
   ];
 
   programs.firefox.enable = true;
@@ -73,7 +75,24 @@
       };
     };
   };
-
+  xdg.desktopEntries = {
+    yazi = {
+      name = "Yazi";
+      icon = "yazi";
+      genericName = "TUI file manager";
+      exec = "kitty yazi %u";
+      terminal = false;
+      categories = [
+        "Utility"
+        "Core"
+        "System"
+        "FileTools"
+        "FileManager"
+        "ConsoleOnly"
+      ];
+      mimeType = [ "inode/directory" ];
+    };
+  };
   programs.fuzzel = {
     enable = true;
     settings = {
@@ -101,4 +120,15 @@
     };
   };
 
+  # [Desktop Entry]
+  # Name=Yazi
+  # Icon=yazi
+  # Comment=Blazing fast terminal file manager written in Rust, based on async I/O
+  # Terminal=true
+  # TryExec=yazi
+  # Exec=yazi %u
+  # Type=Application
+  # MimeType=inode/directory
+  # Categories=Utility;Core;System;FileTools;FileManager;ConsoleOnly
+  # Keywords=File;Manager;Explorer;Browser;Launcher
 }
