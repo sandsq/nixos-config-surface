@@ -56,6 +56,10 @@
     "/share/applications"
     "/share/xdg-desktop-portal"
   ];
+  environment.sessionVariables = {
+    NIXOS_CONFIG_PATH = "$HOME/nixos-config";
+    HOSTNAME = "$(uname -n)";
+  };
 
   networking.hostName = "nixos-surface"; # Define your hostname.
 

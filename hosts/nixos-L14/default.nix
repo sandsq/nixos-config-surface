@@ -39,6 +39,10 @@
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
+  environment.sessionVariables = {
+    NIXOS_CONFIG_PATH = "$HOME/nixos-config";
+    HOSTNAME = "$(uname -n)";
+  };
   environment.pathsToLink = [
     "/share/applications"
     "/share/xdg-desktop-portal"
