@@ -14,7 +14,7 @@
   # done - fix s key on thinkpad keyboard
   # done - test thinkpad ports
   # figure out sleep inhibition issue
-  #
+  # make vim the git editor
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
