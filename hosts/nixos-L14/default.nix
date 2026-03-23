@@ -86,7 +86,34 @@
   nixpkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     gh # seems like gh needs to be here otherwise the auth won't be remembered
+    (pkgs.writeShellScriptBin "python" ''
+      export LD_LIBRARY_PATH=$NIX_LD_LIBRARY_PATH
+      exec ${pkgs.python3}/bin/python "$@"
+    '')
   ];
+  services.flatpak.enable = true;
+  xdg.portal.enable = true;
+
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      zlib
+      zstd
+      stdenv.cc.cc
+      curl
+      openssl
+      attr
+      libssh
+      bzip2
+      libxml2
+      acl
+      libsodium
+      util-linux
+      xz
+      systemd
+    ];
+  };
+  # https://github.com/nix-community/nix-ld?tab=readme-ov-file#my-pythonnodejsrubyinterpreter-libraries-do-not-find-the-libraries-configured-by-nix-ld
 
   # security.rtkit.enable = true;
   # xdg.autostart.enable = true;

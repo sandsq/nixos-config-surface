@@ -42,6 +42,7 @@
       name = "sandsq";
       email = "116196797+sandsq@users.noreply.github.com";
     };
+    lfs.enable = true;
   };
   programs.gh = {
     enable = true;

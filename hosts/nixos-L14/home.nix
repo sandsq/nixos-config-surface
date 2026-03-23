@@ -22,6 +22,9 @@ in
     godot
     nodejs
     claude-code
+    google-chrome
+    vlc
+    discover-overlay
   ];
   programs.claude-code.mcpServers = {
     godot = {

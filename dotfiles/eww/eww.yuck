@@ -270,7 +270,7 @@
       :class "tray debug_border"
       :orientation "v"
       :halign "center"
-      :spacing -45
+      :spacing -35
       :height 100
     )
 )
@@ -547,9 +547,9 @@
     :valign "start"
     (current_workspaces_widget
     )
-    (label
-        :text submap_info
-    )
+    ; (label
+    ;     :text submap_info
+    ; )
     )
 )
 (defwidget bar_widget_bottom []
